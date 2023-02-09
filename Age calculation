@@ -1,0 +1,66 @@
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.Calendar;
+
+
+public class Info {
+	
+	private static int getBirthYear(String birth) {
+		
+		LocalDate birthFormat = LocalDate.parse(birth); //문자형 생년월일을 날짜형으로 변환
+		int birthYear = birthFormat.getYear(); //날짜에서 연도를 추출
+		
+		return birthYear;
+	}
+	
+	private static int getBirthMonth(String birth) {
+		
+		LocalDate birthFormat = LocalDate.parse(birth); //문자형 생년월일을 날짜형으로 변환
+		Month monthInstance = birthFormat.getMonth(); //날짜에서 월을 추출
+		int birthMonth = monthInstance.getValue(); //문자로 된 월을 숫자형으로 변환
+    
+		return birthMonth;
+	}
+
+	private static int getBirthDay(String birth) {
+		
+		LocalDate birthFormat = LocalDate.parse(birth); //문자형 생년월일을 날짜형으로 변환
+		int birthDay = birthFormat.getDayOfMonth(); //날짜에서 일을 추출
+    
+		return birthDay;
+	}
+	
+	private static int getAge(int birthYear){
+		
+		Calendar today = Calendar.getInstance(); //오늘 날짜
+		Integer todayYear = today.get(Calendar.YEAR); //오늘 날짜에서 연도만 추출
+		
+		int age = (todayYear - birthYear + 1); //나이계산
+		
+		return age;
+	}
+	
+	public static void main(String[] args) {
+		
+		String name = "KIM";
+		String gender = "Woman";
+		String add = "Gyeongsan";
+		String birth = "1997-12-30";
+		
+		int birthYear = getBirthYear(birth);
+		int birthMonth = getBirthMonth(birth);
+		int birthDay = getBirthDay(birth);
+		
+		int age = getAge(birthYear);
+		
+		System.out.println("NAME : " + name);
+		System.out.println("GENDER : " + gender);
+		System.out.println("ADDRESS : " + add);
+		System.out.println("BIRTH DATE : " + birth);
+		System.out.println("YEAR OF BIRTH : " + birthYear);
+		System.out.println("MONTH OF BIRTH : " + birthMonth);
+		System.out.println("DAY OF BIRTH : " + birthDay);
+		System.out.println("AGE : " + age);
+		
+	}
+}
